@@ -63,7 +63,7 @@ All icons will have the color #B8B8BB. When icon buttons are clicked, they will 
 
 
 ## Typography
-As the app will remain true to modern standards, a Sans-Serif font will be used. Therefore, the default font used will be Proxima Nova.
+As the app will remain true to modern standards, a Sans-Serif font will be used. Therefore, the default font used will be Inter.
 
 Bold font will be used for headers, post titles and other texts to be highlighted.
 
