@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
 =======
       home: HomePage(),
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
     );
   }
