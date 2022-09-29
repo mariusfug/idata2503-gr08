@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/main_pages/home_page.dart';
 
+import 'main_pages/login_page.dart';
+
+
 void main() {
   runApp(const MyApp());
 }
