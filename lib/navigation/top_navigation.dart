@@ -9,6 +9,17 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
       title: const Text('Forum app'),
       backgroundColor: const Color(0xFF1E1E1E),
       actions: [
+        /// Notification bell
+        const ImageIcon(
+          AssetImage("resources/icons/notification_outline.png"),
+          color: Color(0xFFB8B8B8),
+          size: 30,
+        ),
+        /// Spacing between
+        const SizedBox(
+          width: 10,
+        ),
+        /// Profile button
         RawMaterialButton(
           constraints: BoxConstraints.tight(const Size(35.0, 35.0)),
           onPressed: null,
@@ -25,6 +36,6 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  // Required for AppBar
+  /// Required for AppBar
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

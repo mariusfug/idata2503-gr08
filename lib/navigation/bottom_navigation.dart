@@ -14,23 +14,43 @@ class BottomNavigation extends StatelessWidget {
         showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, size: 30),
+            icon: ImageIcon(
+              AssetImage("resources/icons/home_outline.png"),
+              color: Color(0xFFB8B8B8),
+              size: 30,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore, size: 30),
+            icon: ImageIcon(
+              AssetImage("resources/icons/discover_outline.png"),
+              color: Color(0xFFB8B8B8),
+              size: 30,
+            ),
             label: 'Discover',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add, size: 45),
+            icon: ImageIcon(
+              AssetImage("resources/icons/plus_outline.png"),
+              color: Color(0xFFB8B8B8),
+              size: 45,
+            ),
             label: 'New post',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.group, size: 30),
+            icon: ImageIcon(
+              AssetImage("resources/icons/group_outline.png"),
+              color: Color(0xFFB8B8B8),
+              size: 30,
+            ),
             label: 'Groups',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat, size: 30),
+            icon: ImageIcon(
+              AssetImage("resources/icons/chat_bubble_outline.png"),
+              color: Color(0xFFB8B8B8),
+              size: 30,
+            ),
             label: 'Chats',
           ),
         ],
