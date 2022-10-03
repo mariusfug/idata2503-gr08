@@ -37,13 +37,13 @@ class SignIn extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),),
             ElevatedButton(onPressed: (){print("working");},
+
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0x99FFFFFF),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)
                 ),
               ),
-
 
               child:
               const Text("Sign in with Google",
