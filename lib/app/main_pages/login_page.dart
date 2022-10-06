@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:idata2503_group08/navigation/bottom_navigation.dart';
+
+import '../navigation/bottom_navigation.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

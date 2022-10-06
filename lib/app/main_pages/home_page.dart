@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/navigation/bottom_navigation.dart';
-import 'package:idata2503_group08/navigation/top_navigation.dart';
+import '../navigation/bottom_navigation.dart';
+import '../navigation/top_navigation.dart';
 
 
 class HomePage extends StatelessWidget {
