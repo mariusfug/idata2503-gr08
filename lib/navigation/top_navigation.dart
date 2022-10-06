@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/main_pages/login_page.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   const TopNavigation({Key? key}) : super(key: key);
@@ -22,9 +23,12 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
         /// Profile button
         RawMaterialButton(
           constraints: BoxConstraints.tight(const Size(35.0, 35.0)),
-          onPressed: null,
+          onPressed: () {
+            MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (context) => const LoginPage(),);
+            Navigator.of(context).push(materialPageRoute);
+          },
           elevation: 2.0,
-          fillColor: Colors.white,
+          fillColor: const Color(0xFFB8B8B8),
           shape: const CircleBorder(),
           child: const ImageIcon(
             AssetImage("resources/icons/user_outline.png"),
