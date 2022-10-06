@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../services/auth.dart';
 import '../sign_in/login_page.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   const TopNavigation({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
         RawMaterialButton(
           constraints: BoxConstraints.tight(const Size(35.0, 35.0)),
           onPressed: () {
-            MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (context) => const LoginPage(),);
+            MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (context) => SignIn(auth: Auth(), onSignIn: (user) { },),);
             Navigator.of(context).push(materialPageRoute);
           },
           elevation: 2.0,

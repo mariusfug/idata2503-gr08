@@ -1,19 +1,44 @@
 import 'package:flutter/cupertino.dart';
+import 'package:idata2503_group08/app/main_pages/home_page.dart';
 import 'package:idata2503_group08/app/sign_in/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../services/auth.dart';
 
 class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key}) : super(key: key);
+  const LandingPage({Key? key, required this.auth}) : super(key: key);
+  final AuthBase auth;
 
   @override
   State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
+  User? _user;
 
-  User _user;
+  @override
+  void initState() {
+    super.initState();
+    _updateUser(widget.auth.currentUser);
+  }
+
+  void _updateUser(User? user) {
+    setState(() {
+      _user = user;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const SignIn();
+    if (_user == null) {
+      return SignIn(
+        auth: widget.auth,
+        onSignIn: (user) => _updateUser(user!),
+      );
+    }
+    return HomePage(
+      auth: widget.auth,
+      onSignOut: () => _updateUser(null),
+    );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/app/landing_page.dart';
+import 'package:idata2503_group08/services/auth.dart';
 
 import 'app/sign_in/login_page.dart';
 
@@ -18,8 +19,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LandingPage(),
+    return MaterialApp(
+      home: LandingPage(
+        auth: Auth(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
