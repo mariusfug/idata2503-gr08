@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({Key? key}) : super(key: key);
+class CustomElevatedButton extends StatelessWidget {
+  CustomElevatedButton({
+    required this.child,
+    required this.color,
+    required this.borderRadius,
+    required this.onPressed,
+});
+  final Widget child;
+  final Color color;
+  final double borderRadius;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ElevatedButton(onPressed: () {print("object");},
+
+        child: );
   }
 }
