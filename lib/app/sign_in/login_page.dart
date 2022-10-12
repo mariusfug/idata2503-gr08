@@ -20,10 +20,11 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFF1E1E1E),
-      padding: const EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
+    return Material(
+      child: Container(
+        color: const Color(0xFF1E1E1E),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -33,7 +34,8 @@ class SignIn extends StatelessWidget {
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 32,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold
+              ),
             ),
             ElevatedButton(
               onPressed: () {
@@ -77,6 +79,19 @@ class SignIn extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                print("working");
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFFC6A03),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20))),
+              child: const Text(
+                "Sign in with mobile number",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 _signInAnonymously();
               },
               style: ElevatedButton.styleFrom(
@@ -88,8 +103,12 @@ class SignIn extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
             ),
+
           ],
-      ),
+        ),
+
+      )
+
     );
   }
 }
