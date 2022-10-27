@@ -18,6 +18,15 @@ class SignIn extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithGoogle() async {
+    try {
+      final user = await auth.signInWithGoogle();
+      onSignIn(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -39,7 +48,7 @@ class SignIn extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                print("working");
+                _signInWithGoogle();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0x99FFFFFF),
