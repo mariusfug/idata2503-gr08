@@ -35,7 +35,6 @@ dependencies:
   firebase_auth: 3.11.1
   file_picker:
   google_sign_in: 5.4.2
-  open_file:
 
 
 
