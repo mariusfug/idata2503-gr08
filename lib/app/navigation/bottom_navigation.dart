@@ -24,7 +24,7 @@ class _MyHomePageState extends State<BottomNavigation> {
       child: MyApp(),
     ),
     Container(
-      child: AddNewPost(),
+      //child: UserPost(title: ' '),
     ),
     Container(
       child: Group(),
@@ -46,8 +46,8 @@ class _MyHomePageState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
+        //onTap: onTabTapped,
+
         backgroundColor: const Color(0xFF1E1E1E),
         selectedItemColor: Colors.white,
         unselectedItemColor: const Color(0x90B8B8B8),

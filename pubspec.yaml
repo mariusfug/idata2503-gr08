@@ -33,8 +33,9 @@ dependencies:
     sdk: flutter
   firebase_core: 1.24.0
   firebase_auth: 3.11.1
-  file_picker: 5.2.2
+  file_picker:
   google_sign_in: 5.4.2
+  open_file:
 
 
 
