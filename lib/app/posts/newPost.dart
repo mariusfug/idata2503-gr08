@@ -5,7 +5,7 @@ import 'package:idata2503_group08/main.dart';
 
 
 class UserPost {
-  UserPost({required this.title, this.content, required this.picture});
+  UserPost({required this.title, this.content, this.picture});
 
   String title;
   String ?content;
@@ -13,5 +13,6 @@ class UserPost {
 
   int upVotes = 0;
   int downVotes = 0;
+
 
 }
