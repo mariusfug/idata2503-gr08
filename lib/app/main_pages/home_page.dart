@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TopNavigation(),
-      bottomNavigationBar: const BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(),
       body: ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
     );
   }
