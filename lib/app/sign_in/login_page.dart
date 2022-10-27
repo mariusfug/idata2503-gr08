@@ -27,6 +27,15 @@ class SignIn extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithFacebook() async {
+    try {
+      final user = await auth.signInWithFacebook();
+      onSignIn(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -62,7 +71,7 @@ class SignIn extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                print("working");
+                _signInWithFacebook();
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4267B2),
