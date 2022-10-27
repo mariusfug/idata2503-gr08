@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import '../../services/auth.dart';
+import '../chat/chatPage.dart';
+import '../group/Group.dart';
+import '../main_pages/add_new_post.dart';
 import '../main_pages/home_page.dart';
-import '../posts/newPost.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -22,9 +24,22 @@ class _MyHomePageState extends State<BottomNavigation> {
       child: MyApp(),
     ),
     Container(
-      child: UserPost(title: ' '),
+      child: AddNewPost(),
     ),
+    Container(
+      child: Group(),
+    ),
+    Container(
+      child: Chat(),
+    )
+
   ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
 
   @override
@@ -32,7 +47,7 @@ class _MyHomePageState extends State<BottomNavigation> {
     return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
-
+        currentIndex: _currentIndex,
         backgroundColor: const Color(0xFF1E1E1E),
         selectedItemColor: Colors.white,
         unselectedItemColor: const Color(0x90B8B8B8),

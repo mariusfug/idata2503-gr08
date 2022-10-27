@@ -14,6 +14,5 @@ class UserPost {
   int upVotes = 0;
   int downVotes = 0;
 
-  
 
 }

@@ -14,7 +14,7 @@ class AddNewPost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TopNavigation(),
-      bottomNavigationBar: const BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(),
       body: Container(
         color: const Color(0xFF1E1E1E),
         child: Card(
