@@ -35,8 +35,8 @@ class _AddNewPost extends State<AddNewPost> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                const TextField(decoration: InputDecoration(labelText: "Post Title", labelStyle:TextStyle(color: Colors.white),),),
-                const TextField(decoration: InputDecoration(labelText: "Post Description", labelStyle:TextStyle(color: Colors.white),),),
+                const TextField(key: Key("postTitle"), decoration: InputDecoration(labelText: "Post Title", labelStyle:TextStyle(color: Colors.white),),),
+                const TextField(key: Key("postDescription") , decoration: InputDecoration(labelText: "Post Description", labelStyle:TextStyle(color: Colors.white),),),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: ElevatedButton(child: const Text("pick a file"),onPressed: (){pickFiles();
@@ -47,7 +47,7 @@ class _AddNewPost extends State<AddNewPost> {
                 const SizedBox(
                   height: 40,
                 ),
-                ElevatedButton(onPressed: (){print("Submited");}, child: const Text("Add post"))
+                ElevatedButton(key: const Key("submitButton") ,onPressed: (){print("Submited");}, child: const Text("Add post"))
               ]
           ),
 

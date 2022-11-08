@@ -9,7 +9,10 @@ class SignIn extends StatelessWidget {
   final AuthBase auth;
   final void Function(User?) onSignIn;
 
-  Future<void> _signInAnonymously() async {
+
+
+  @visibleForTesting
+  Future<void> signInAnonymously() async {
     try {
       final user = await auth.signInAnonymously();
       onSignIn(user);
@@ -55,6 +58,8 @@ class SignIn extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),
             ),
+
+
             ElevatedButton(
               onPressed: () {
                 _signInWithGoogle();
@@ -109,8 +114,9 @@ class SignIn extends StatelessWidget {
               ),
             ),
             ElevatedButton(
+              key: const Key("anonymousSignIn"),
               onPressed: () {
-                _signInAnonymously();
+                signInAnonymously();
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.yellow[300],

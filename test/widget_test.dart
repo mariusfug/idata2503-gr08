@@ -5,26 +5,30 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:idata2503_group08/app/main_pages/add_new_post.dart';
+import 'package:idata2503_group08/app/sign_in/login_page.dart';
 
 import 'package:idata2503_group08/main.dart';
+import 'package:idata2503_group08/services/auth.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('Add new post', (WidgetTester tester) async {
+    final postTitle = find.byKey(ValueKey("postTitle"));
+    final postDescription = find.byKey(ValueKey("postDescription"));
+    final submitButton = find.byKey(ValueKey("submitButton"));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.pumpWidget(const MaterialApp(home: AddNewPost()));
+    await tester.enterText(postTitle, "this is for testing");
+    await tester.enterText(postDescription, "Even more testing");
+    await tester.tap(submitButton);
     await tester.pump();
+    
+    expect(find.text("this is for testing"), findsOneWidget);
+    expect(find.text("Even more testing"), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
   });
 }
