@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/app/posts/post_card.dart';
 import '../../services/auth.dart';
 import '../navigation/bottom_navigation.dart';
 import '../navigation/top_navigation.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.auth, required this.onSignOut});
@@ -19,14 +19,19 @@ class HomePage extends StatelessWidget {
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TopNavigation(),
       bottomNavigationBar: BottomNavigation(),
-      body: ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
+      backgroundColor: const Color(0xFF1E1E1E),
+      body: Center(
+        child: Column(children: <Widget>[
+          ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
+          const PostCard(title: "Title", content: "this is an example of a user post"),
+          const PostCard(title: "Title2", content: "this is an example of a similar user post but with \n multiple \n lines")
+        ]),
+      ),
     );
   }
 }

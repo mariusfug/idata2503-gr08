@@ -31,11 +31,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: 1.24.0
-  firebase_auth: 3.11.1
+  firebase_core: 2.1.1
+  firebase_auth: 4.1.1
   file_picker:
   google_sign_in: 5.4.2
   flutter_login_facebook: 1.6.1
+  cloud_firestore: 4.0.4
+  provider: 6.0.4
 
 
 

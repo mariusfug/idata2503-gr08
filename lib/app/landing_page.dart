@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:idata2503_group08/app/main_pages/home_page.dart';
 import 'package:idata2503_group08/app/sign_in/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 import '../services/auth.dart';
+import '../services/database.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key, required this.auth}) : super(key: key);
@@ -37,8 +40,8 @@ class _LandingPageState extends State<LandingPage> {
       );
     }
     return HomePage(
-      auth: widget.auth,
-      onSignOut: () => _updateUser(null),
+        auth: widget.auth,
+        onSignOut: () => _updateUser(null),
     );
   }
 }
