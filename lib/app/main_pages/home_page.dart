@@ -31,17 +31,17 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(children: <Widget>[
           ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
-          const PostCard(key: Key("userPostTitle"),title: "Title", content: "this is an example of a user post"),
-          const PostCard(key: Key("userPostTitle2"),title: "Title2", content: "this is an example of a similar user post but with \n multiple \n lines")
+          _buildCard(context,"post"),
+          PostCard(key: Key("userPostTitle2"),title: "Hei", content: "this is an example of a similar user post but with \n multiple \n lines")
         ]),
       ),
     );
   }
 
-  Widget _buildPostTitle(BuildContext context) {
+  Widget _buildCard(BuildContext context, String title) {
     final Repository repository = Provider.of<Repository>(context);
     return StreamBuilder(
-      stream: repository.getPostStream("post"),
+      stream: repository.getPostStream(title),
       builder: (BuildContext context, AsyncSnapshot<Post?> snapshot) {
         if (snapshot.connectionState != ConnectionState.active) {
           return const Text("Loading...");
@@ -51,7 +51,8 @@ class HomePage extends StatelessWidget {
           return const Text("Loading...");
         }
         final Post post = snapshot.data!;
-        return Text(post.title);
+        return PostCard(title: post.title,content: post.content,);
+
       },
     );
   }
