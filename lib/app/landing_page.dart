@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth.dart';
-import '../services/database.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key, required this.auth}) : super(key: key);
