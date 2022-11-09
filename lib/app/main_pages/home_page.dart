@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/app/posts/post_card.dart';
+import 'package:provider/provider.dart';
+import '../../model/post.dart';
 import '../../services/auth.dart';
+import '../../services/repository.dart';
 import '../navigation/bottom_navigation.dart';
 import '../navigation/top_navigation.dart';
 
@@ -28,10 +31,32 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(children: <Widget>[
           ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
-          const PostCard(title: "Title", content: "this is an example of a user post"),
-          const PostCard(title: "Title2", content: "this is an example of a similar user post but with \n multiple \n lines")
+          _buildPostTitle(context),
+
+          const PostCard(
+              title: "Title2",
+              content:
+                  "this is an example of a similar user post but with \n multiple \n lines")
         ]),
       ),
+    );
+  }
+
+  Widget _buildPostTitle(BuildContext context) {
+    final Repository repository = Provider.of<Repository>(context);
+    return StreamBuilder(
+      stream: repository.getPostStream("post"),
+      builder: (BuildContext context, AsyncSnapshot<Post?> snapshot) {
+        if (snapshot.connectionState != ConnectionState.active) {
+          return const Text("Loading...");
+        } else if (snapshot.hasError) {
+          return Text("Error: ${snapshot.error}");
+        } else if (!snapshot.hasData || snapshot.data == null) {
+          return const Text("Loading...");
+        }
+        final Post post = snapshot.data!;
+        return Text(post.title);
+      },
     );
   }
 }
