@@ -8,22 +8,37 @@ class FirestoreRepository implements Repository {
   final FirebaseFirestore posts = FirebaseFirestore.instance;
 
   @override
-  Stream<Post?> getPostStream(String postId) {
-    final Stream<DocumentSnapshot<Map<String, dynamic>>> snapshots =
-        posts.doc(ApiPaths.posts(postId)).snapshots();
+  Stream<Iterable<Post>> getPostsStream(String postId) =>
+      _getCollectionStream(ApiPaths.posts(postId), Post.fromMap);
 
-    return snapshots.map(_convertSnapshotToPost);
+  Stream<T?> _getDocumentStream<T>(
+      String path, T Function(Map<String, dynamic>) converter) {
+    print("Get document at $path");
+
+    final Stream<DocumentSnapshot<Map<String, dynamic>>> snapshots =
+        posts.doc(path).snapshots();
+
+    return snapshots.map((documentSnapshot) {
+      final Map<String, dynamic>? document = documentSnapshot.data();
+      return document != null ? converter(document) : null;
+    });
   }
 
-  Post? _convertSnapshotToPost(
-      DocumentSnapshot<Map<String, dynamic>> snapshot) {
-    final Map<String, dynamic>? data = snapshot.data();
-    if (data != null &&
-        data.containsKey("title") &&
-        data.containsKey("content")) {
-      return Post(data["title"], data["content"]);
-    } else {
-      return null;
-    }
+  Stream<Iterable<T>> _getCollectionStream<T>(
+      String path, T Function(Map<String, dynamic>) converter) {
+    print("Get collection items at $path");
+
+    final Stream<QuerySnapshot<Map<String, dynamic>>> snapshots =
+        posts.collection(path).snapshots();
+
+    return snapshots.map((collectionSnapshot) {
+      final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
+          collectionSnapshot.docs;
+      return documents
+          .map((QueryDocumentSnapshot<Map<String, dynamic>> document) {
+        final Map<String, dynamic> data = document.data();
+        return converter(data);
+      });
+    });
   }
 }

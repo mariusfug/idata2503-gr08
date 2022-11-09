@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../../model/post.dart';
+
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key, required this.title, required this.content})
+  final Post post;
+
+  const PostCard(this.post, {Key? key})
       : super(key: key);
 
-  final String title;
-  final String content;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,9 @@ class PostCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(post.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
               const Divider(height: 15, color: Colors.white, thickness: 1),
-              Text(content, style: const TextStyle(fontSize: 14, color: Colors.white)),
+              Text(post.content, style: const TextStyle(fontSize: 14, color: Colors.white)),
             ],
           ),
         ),

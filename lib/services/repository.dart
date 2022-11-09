@@ -1,5 +1,5 @@
 import '../model/post.dart';
 
 abstract class Repository {
-  Stream<Post?> getPostStream(String postId);
+  Stream<Iterable<Post>> getPostsStream(String postId);
 }

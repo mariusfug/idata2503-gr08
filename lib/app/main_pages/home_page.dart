@@ -29,30 +29,34 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigation(),
       backgroundColor: const Color(0xFF1E1E1E),
       body: Center(
-        child: Column(children: <Widget>[
-          ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
-          _buildCard(context,"post"),
-          PostCard(key: Key("userPostTitle2"),title: "Hei", content: "this is an example of a similar user post but with \n multiple \n lines")
-        ]),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
+              _buildPostCards(context),
+            ],
+          ),
+        ),
       ),
     );
   }
 
-  Widget _buildCard(BuildContext context, String title) {
-    final Repository repository = Provider.of<Repository>(context);
-    return StreamBuilder(
-      stream: repository.getPostStream(title),
-      builder: (BuildContext context, AsyncSnapshot<Post?> snapshot) {
-        if (snapshot.connectionState != ConnectionState.active) {
-          return const Text("Loading...");
-        } else if (snapshot.hasError) {
-          return Text("Error: ${snapshot.error}");
-        } else if (!snapshot.hasData || snapshot.data == null) {
+  Widget _buildPostCards(BuildContext context) {
+    final Repository repository =
+        Provider.of<Repository>(context, listen: false);
+    return StreamBuilder<Iterable<Post>?>(
+      stream: repository.getPostsStream(""),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.active ||
+            !snapshot.hasData ||
+            snapshot.data == null) {
           return const Text("Loading...");
         }
-        final Post post = snapshot.data!;
-        return PostCard(title: post.title,content: post.content,);
+        final Iterable<Post> posts = snapshot.data!;
+        final List<PostCard> postCards =
+            posts.map((post) => PostCard(post)).toList();
 
+        return Column(children: postCards);
       },
     );
   }
