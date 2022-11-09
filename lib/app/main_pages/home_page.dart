@@ -28,8 +28,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(children: <Widget>[
           ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
-          const PostCard(title: "Title", content: "this is an example of a user post"),
-          const PostCard(title: "Title2", content: "this is an example of a similar user post but with \n multiple \n lines")
+          const PostCard(key: Key("userPostTitle"),title: "Title", content: "this is an example of a user post"),
+          const PostCard(key: Key("userPostTitle2"),title: "Title2", content: "this is an example of a similar user post but with \n multiple \n lines")
         ]),
       ),
     );

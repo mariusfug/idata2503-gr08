@@ -39,7 +39,7 @@ class _AddNewPost extends State<AddNewPost> {
                 const TextField(key: Key("postDescription") , decoration: InputDecoration(labelText: "Post Description", labelStyle:TextStyle(color: Colors.white),),),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
-                  child: ElevatedButton(child: const Text("pick a file"),onPressed: (){pickFiles();
+                  child: ElevatedButton(key: const Key("postImage"),child: const Text("pick a file"),onPressed: (){pickFiles();
 
                   },),
                 ),

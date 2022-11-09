@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     if (_user == null) {
-      return SignIn(
+      return SignIn(key: const Key("userState"),
         auth: widget.auth,
         onSignIn: (user) => _updateUser(user!),
       );
