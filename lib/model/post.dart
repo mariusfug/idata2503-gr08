@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-import 'comment.dart';
-
 class Post {
   String title;
   final String? content;
@@ -17,7 +15,6 @@ class Post {
       required this.downVote,
       required this.boardTag,
       this.groupTag,
-      this.image,
       this.content});
 
   static Post fromMap(Map<String, dynamic> data) {
@@ -35,7 +32,6 @@ class Post {
         upVote: data["upvote"],
         downVote: data["downvote"],
         boardTag: data["boardTag"],
-        groupTag: data["groupTag"],
-        image: data["image"]);
+        groupTag: data["groupTag"]);
   }
 }

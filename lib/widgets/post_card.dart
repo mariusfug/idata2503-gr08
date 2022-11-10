@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 import '../../model/post.dart';
@@ -20,7 +18,7 @@ class PostCard extends StatelessWidget {
         color: const Color(0xFF2D2D30),
         elevation: 5,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 5.0),
+          padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 3.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,13 +39,15 @@ class PostCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const ImageIcon(
-                    AssetImage("resources/icons/upvote.png"),
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 5,
+                  IconButton(
+                    onPressed: () {
+                      print("object");
+                    },
+                    icon: const ImageIcon(
+                      AssetImage("resources/icons/upvote.png"),
+                      color: Colors.white,
+                      size: 15,
+                    ),
                   ),
                   Text(
                     "${post.upVote}",
@@ -56,24 +56,39 @@ class PostCard extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const ImageIcon(
-                    AssetImage("resources/icons/downvote.png"),
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 5,
+                  IconButton(
+                    onPressed: () {
+                      print("object");
+                    },
+                    icon: const ImageIcon(
+                      AssetImage("resources/icons/downvote.png"),
+                      color: Colors.white,
+                      size: 15,
+                    ),
                   ),
                   Text(
                     "${post.downVote}",
                     style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 20,
                   ),
                   Text(
                     post.boardTag,
                     style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      print("object");
+                    },
+                    icon: const ImageIcon(
+                      AssetImage("resources/icons/chat_bubble_outline.png"),
+                      color: Colors.white,
+                      size: 15,
+                    ),
                   ),
                 ],
               )

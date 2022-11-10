@@ -6,7 +6,6 @@ import 'package:idata2503_group08/services/firestore/firestore_repository.dart';
 import 'package:idata2503_group08/services/repository.dart';
 import 'package:provider/provider.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -22,11 +21,11 @@ class MyApp extends StatelessWidget {
     return Provider<Repository>(
       create: (context) => FirestoreRepository(),
       child: MaterialApp(
-        home: LandingPage(auth: Auth(),
+        home: LandingPage(
+          auth: Auth(),
         ),
         debugShowCheckedModeBanner: false,
       ),
     );
   }
 }
-
