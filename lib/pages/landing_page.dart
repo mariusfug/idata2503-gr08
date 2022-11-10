@@ -6,41 +6,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth.dart';
+import 'main_pages/main_screen.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key, required this.auth}) : super(key: key);
-  final AuthBase auth;
-
-  @override
-  State<LandingPage> createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
-  User? _user;
-
-  @override
-  void initState() {
-    super.initState();
-    _updateUser(widget.auth.currentUser);
-  }
-
-  void _updateUser(User? user) {
-    setState(() {
-      _user = user;
-    });
-  }
+class LandingPage extends StatelessWidget {
+  const LandingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (_user == null) {
-      return SignIn(key: const Key("userState"),
-        auth: widget.auth,
-        onSignIn: (user) => _updateUser(user!),
-      );
-    }
-    return HomePage(
-        auth: widget.auth,
-        onSignOut: () => _updateUser(null),
-    );
+    final auth = Provider.of<AuthBase>(context, listen: false);
+    return StreamBuilder<User?>(
+        stream: auth.authStateChanges(),
+        builder: (context, snapshot) {
+          final User? user = snapshot.data;
+          if (user == null) {
+            return SignIn(auth: auth);
+          }
+          return MainScreen(auth: auth);
+        });
   }
 }

@@ -4,35 +4,23 @@ import 'package:provider/provider.dart';
 import '../../model/post.dart';
 import '../../services/auth.dart';
 import '../../services/repository.dart';
-import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
-import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key, required this.auth, required this.onSignOut});
-
-  final AuthBase auth;
-  final VoidCallback onSignOut;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: const TopNavigation(),
-      bottomNavigationBar: BottomNavigation(),
       backgroundColor: const Color(0xFF1E1E1E),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               ElevatedButton(
-                  onPressed: () => _signOut, child: const Text("Logout")),
+                  onPressed: () => _signOut(context),
+                  child: const Text("Logout")),
               _buildPostCards(context),
-              PostCard(Post(
-                title: "title",
-                upVote: 0,
-                downVote: 0,
-                boardTag: "boardTag",
-                content: "This is content for the post",
-              ))
             ],
           ),
         ),
@@ -61,10 +49,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Future<void> _signOut() async {
+  Future<void> _signOut(BuildContext context) async {
     try {
+      final auth = Provider.of<AuthBase>(context, listen: false);
       await auth.signOut();
-      onSignOut();
     } catch (e) {
       print(e.toString());
     }

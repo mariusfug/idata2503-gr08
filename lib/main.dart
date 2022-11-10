@@ -15,16 +15,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return Provider<Repository>(
-      create: (context) => FirestoreRepository(),
-      child: MaterialApp(
-        home: LandingPage(
-          auth: Auth(),
-        ),
+    return MultiProvider(
+      providers: [
+        Provider<Repository>(create: (context) => FirestoreRepository()),
+        Provider<AuthBase>(create: (context) => Auth())
+      ],
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
+        home: LandingPage(),
       ),
     );
   }

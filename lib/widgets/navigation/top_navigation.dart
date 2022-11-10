@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/add_post/add_new_post.dart';
+import 'package:idata2503_group08/pages/main_pages/main_screen.dart';
 
 import '../../services/auth.dart';
 import 'package:idata2503_group08/pages/main_pages/home_page.dart';
@@ -17,10 +18,7 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
         RawMaterialButton(
           onPressed: () {
             MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                builder: (context) => HomePage(
-                      auth: Auth(),
-                      onSignOut: () {},
-                    ));
+                builder: (context) => MainScreen(auth: Auth()));
             Navigator.of(context).push(materialPageRoute);
           },
           elevation: 2.0,

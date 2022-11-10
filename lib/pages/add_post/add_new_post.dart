@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/add_post/select_group_to_post.dart';
 import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/services/validators.dart';
-import 'package:provider/provider.dart';
-import '../../model/post.dart';
-import '../../services/repository.dart';
-import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
 
 class AddNewPost extends StatefulWidget {
   const AddNewPost({Key? key}) : super(key: key);
@@ -75,8 +71,6 @@ class _AddNewPostState extends State<AddNewPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopNavigation(),
-      bottomNavigationBar: BottomNavigation(),
       backgroundColor: const Color(0xFF1E1E1E),
       body: SingleChildScrollView(
         child: Padding(

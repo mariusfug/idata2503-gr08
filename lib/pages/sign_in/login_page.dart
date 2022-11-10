@@ -5,9 +5,8 @@ import '../../services/auth.dart';
 
 
 class SignIn extends StatelessWidget {
-  const SignIn({super.key, required this.onSignIn, required this.auth});
+  const SignIn({super.key, required this.auth});
   final AuthBase auth;
-  final void Function(User?) onSignIn;
 
 
 
@@ -15,7 +14,6 @@ class SignIn extends StatelessWidget {
   Future<void> signInAnonymously() async {
     try {
       final user = await auth.signInAnonymously();
-      onSignIn(user);
     } catch (e) {
       print(e.toString());
     }
@@ -24,7 +22,6 @@ class SignIn extends StatelessWidget {
   Future<void> _signInWithGoogle() async {
     try {
       final user = await auth.signInWithGoogle();
-      onSignIn(user);
     } catch (e) {
       print(e.toString());
     }
@@ -33,7 +30,6 @@ class SignIn extends StatelessWidget {
   Future<void> _signInWithFacebook() async {
     try {
       final user = await auth.signInWithFacebook();
-      onSignIn(user);
     } catch (e) {
       print(e.toString());
     }
