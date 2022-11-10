@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/app/landing_page.dart';
+import 'package:idata2503_group08/pages/landing_page.dart';
 import 'package:idata2503_group08/services/auth.dart';
 import 'package:idata2503_group08/services/firestore/firestore_repository.dart';
 import 'package:idata2503_group08/services/repository.dart';

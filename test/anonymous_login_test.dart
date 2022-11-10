@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:idata2503_group08/app/posts/post_card.dart';
+import 'package:idata2503_group08/widgets/post_card.dart';
 import 'package:idata2503_group08/model/post.dart';
 
 void main() {

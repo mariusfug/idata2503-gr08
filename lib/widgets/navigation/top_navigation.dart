@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/app/main_pages/add_new_post.dart';
+import 'package:idata2503_group08/pages/main_pages/add_new_post.dart';
 
 import '../../services/auth.dart';
-import '../main_pages/home_page.dart';
-import '../sign_in/login_page.dart';
+import 'package:idata2503_group08/pages/main_pages/home_page.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   const TopNavigation({Key? key}) : super(key: key);

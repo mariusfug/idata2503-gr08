@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../main.dart';
 import '../../services/auth.dart';
-import '../chat/chatPage.dart';
-import '../group/Group.dart';
-import '../main_pages/add_new_post.dart';
-import '../main_pages/home_page.dart';
+import 'package:idata2503_group08/pages/chat/chatPage.dart';
+import 'package:idata2503_group08/pages/group/Group.dart';
+import 'package:idata2503_group08/pages/main_pages/home_page.dart';
+
 
 class BottomNavigation extends StatefulWidget {
   @override

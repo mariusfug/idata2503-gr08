@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/app/posts/post_card.dart';
+import 'package:idata2503_group08/widgets/post_card.dart';
 import 'package:provider/provider.dart';
 import '../../model/post.dart';
 import '../../services/auth.dart';
 import '../../services/repository.dart';
-import '../navigation/bottom_navigation.dart';
-import '../navigation/top_navigation.dart';
+import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
+import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.auth, required this.onSignOut});
