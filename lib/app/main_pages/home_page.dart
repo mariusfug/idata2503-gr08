@@ -34,6 +34,13 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
               _buildPostCards(context),
+              PostCard(Post(
+                title: "title",
+                upVote: 0,
+                downVote: 0,
+                boardTag: "boardTag",
+                content: "This is content for the post",
+              ))
             ],
           ),
         ),
