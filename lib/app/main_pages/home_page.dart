@@ -13,15 +13,6 @@ class HomePage extends StatelessWidget {
   final AuthBase auth;
   final VoidCallback onSignOut;
 
-  Future<void> _signOut() async {
-    try {
-      await auth.signOut();
-      onSignOut();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +23,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ElevatedButton(onPressed: _signOut, child: const Text("Logout")),
+              ElevatedButton(
+                  onPressed: () => _signOut, child: const Text("Logout")),
               _buildPostCards(context),
             ],
           ),
@@ -41,11 +33,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  /// Build post cards from all entries in general
   Widget _buildPostCards(BuildContext context) {
     final Repository repository =
         Provider.of<Repository>(context, listen: false);
     return StreamBuilder<Iterable<Post>?>(
-      stream: repository.getPostsStream(""),
+      stream: repository.getPostsStream("general/posts"),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.active ||
             !snapshot.hasData ||
@@ -59,5 +52,14 @@ class HomePage extends StatelessWidget {
         return Column(children: postCards);
       },
     );
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await auth.signOut();
+      onSignOut();
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

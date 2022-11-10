@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/app/main_pages/add_new_post.dart';
 
 import '../../services/auth.dart';
+import '../main_pages/home_page.dart';
 import '../sign_in/login_page.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   const TopNavigation({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +15,35 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: const Color(0xFF1E1E1E),
       actions: [
         /// Notification bell
-        const ImageIcon(
-          AssetImage("resources/icons/notification_outline.png"),
-          color: Color(0xFFB8B8B8),
-          size: 30,
+        RawMaterialButton(
+          onPressed: () {
+            MaterialPageRoute materialPageRoute = MaterialPageRoute(
+                builder: (context) => HomePage(
+                      auth: Auth(),
+                      onSignOut: () {},
+                    ));
+            Navigator.of(context).push(materialPageRoute);
+          },
+          elevation: 2.0,
+          shape: const CircleBorder(),
+          child: const ImageIcon(
+            AssetImage("resources/icons/notification_outline.png"),
+            color: Color(0xFFB8B8B8),
+            size: 30,
+          ),
         ),
+
         /// Spacing between
         const SizedBox(
           width: 10,
         ),
+
         /// Profile button
         RawMaterialButton(
           constraints: BoxConstraints.tight(const Size(35.0, 35.0)),
           onPressed: () {
-            MaterialPageRoute materialPageRoute = MaterialPageRoute(builder: (context) => SignIn(auth: Auth(), onSignIn: (user) { },),);
+            MaterialPageRoute materialPageRoute =
+                MaterialPageRoute(builder: (context) => const AddNewPost());
             Navigator.of(context).push(materialPageRoute);
           },
           elevation: 2.0,
@@ -44,6 +59,7 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
+
   /// Required for AppBar
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
