@@ -166,7 +166,7 @@ class _AddNewPostState extends State<AddNewPost> {
   Widget _buildNextButton(context) {
     return ElevatedButton(
         onPressed: !_fieldValidation ? () => _clickNextButton(context) : null,
-        key: const Key("add_post_button"),
+        key: const Key("post_next_button"),
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFF007ACC),
           shape:

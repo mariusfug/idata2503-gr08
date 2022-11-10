@@ -24,13 +24,48 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0)),
             color: const Color(0x1E1E1E1E),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
+              child: Stack(
+                children: [
+                  Column(
+                    children: <Widget>[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Flexible(child: Text("Post to", style: TextStyle(color: Colors.white, fontSize: 24),)),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: _buildAddPostButton(context),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 
-  /*/// Add new post, should be called from 'Add post' button only
+  Widget _buildAddPostButton(context) {
+    return ElevatedButton(
+        onPressed: () {},
+        key: const Key("post_next_button"),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFF007ACC),
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          disabledBackgroundColor: Colors.white24,
+          disabledForegroundColor: Colors.white,
+        ),
+        child: const Text("Next"));
+  }
+
+/*/// Add new post, should be called from 'Add post' button only
   void _addPost(BuildContext context) async {
     try {
       if (!_titleValid()) {
