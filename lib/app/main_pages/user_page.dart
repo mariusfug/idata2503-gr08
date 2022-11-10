@@ -35,13 +35,14 @@ class _UserPage extends State<UserPage> {
                   height: 30,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      print("logout button pressed");
-                    },
-                    child: const Text(
-                      "Logout",
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ))
+                  onPressed: () {
+                    print("logout button pressed");
+                  },
+                  child: const Text(
+                    "Logout",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                )
               ],
             )
           ],
