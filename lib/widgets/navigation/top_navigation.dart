@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/pages/main_pages/add_new_post.dart';
+import 'package:idata2503_group08/pages/add_post/add_new_post.dart';
 
 import '../../services/auth.dart';
 import 'package:idata2503_group08/pages/main_pages/home_page.dart';
