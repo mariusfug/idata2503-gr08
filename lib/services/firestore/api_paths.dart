@@ -1,3 +1,3 @@
 class ApiPaths {
-  static String posts(String postId) => "posts/$postId";
+  static String posts(String postId) => "groups/$postId";
 }
