@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idata2503_group08/app/navigation/top_navigation.dart';
+import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
 
 class UserPage extends StatefulWidget {
