@@ -18,6 +18,11 @@ class FirestoreRepository implements Repository {
     postsRef.add({
       'title': post.title,
       "content": post.content,
+      "upvote": post.upVote,
+      "downvote": post.downVote,
+      "boardTag": post.boardTag,
+      "groupTag": post.groupTag,
+      "image": post.image
     });
     return null;
   }
