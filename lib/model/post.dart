@@ -10,7 +10,6 @@ class Post {
   Image? image;
   final String boardTag;
   final String? groupTag;
-  Comment? comment;
 
   Post(
       {required this.title,
@@ -28,7 +27,6 @@ class Post {
     assert(data.containsKey("downvote"), "Missing downvote property");
     assert(data.containsKey("boardTag"), "Missing board tag property");
     assert(data.containsKey("groupTag"), "Missing group tag property");
-    assert(data.containsKey("comment"), "Missing comment property");
     assert(data.containsKey("image"), "Missing image property");
 
     return Post(
