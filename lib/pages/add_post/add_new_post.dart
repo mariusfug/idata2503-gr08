@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/add_post/select_group_to_post.dart';
-import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/services/validators.dart';
 
 import '../../model/post.dart';

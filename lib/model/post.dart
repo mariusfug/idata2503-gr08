@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:timeago/timeago.dart';
 
 class Post {
   String title;
