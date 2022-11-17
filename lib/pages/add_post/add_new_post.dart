@@ -23,11 +23,11 @@ class _AddNewPostState extends State<AddNewPost> {
   late bool _fieldValidation;
 
   String get _title => _titleController.text;
+
   String get _content => _contentController.text;
 
   PlatformFile? file;
   FilePickerResult? result;
-
 
   bool _titleValid() {
     return _titleValidator.isValid(_title);
@@ -60,14 +60,19 @@ class _AddNewPostState extends State<AddNewPost> {
       if (!_titleValid()) {
         _enableValidation();
       } else {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => SelectGroupToPost(post: Post(title: _title, content: _content, boardTag: 'General'))));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SelectGroupToPost(
+                    post: Post(
+                        title: _title,
+                        content: _content,
+                        boardTag: 'General'))));
       }
     } catch (e) {
       print(e.toString());
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +84,7 @@ class _AddNewPostState extends State<AddNewPost> {
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0)),
-            color: const Color(0x1E1E1E1E),
+            color: const Color(0xFF2D2D30),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
               child: Stack(
@@ -108,7 +113,6 @@ class _AddNewPostState extends State<AddNewPost> {
                           ),
                         ),
                         _buildNextButton(context),
-
                       ],
                     ),
                     TextField(
@@ -128,6 +132,9 @@ class _AddNewPostState extends State<AddNewPost> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(15.0),
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xCC007ACC),
+                          ),
                           key: const Key("postImage"),
                           child: const Text("Attach image"),
                           onPressed: () {
@@ -161,7 +168,7 @@ class _AddNewPostState extends State<AddNewPost> {
         onPressed: !_fieldValidation ? () => _clickNextButton(context) : null,
         key: const Key("post_next_button"),
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF007ACC),
+          backgroundColor: const Color(0xCC007ACC),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
           disabledBackgroundColor: Colors.white24,

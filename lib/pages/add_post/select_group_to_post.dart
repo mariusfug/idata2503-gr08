@@ -24,7 +24,7 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
           child: Card(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0)),
-            color: const Color(0x1E1E1E1E),
+            color: const Color(0xFF2D2D30),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
               child: Stack(
@@ -32,7 +32,7 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
                   Column(
                     children: <Widget>[
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Flexible(
                               child: Text(
@@ -44,6 +44,32 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
                             child: _buildAddPostButton(context),
                           )
                         ],
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 30,
+                        child: TextField(
+                          cursorColor: Colors.black,
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.white38, width: 1.0),
+                            ),
+                            hintText: "Search...",
+                            hintStyle: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold),
+                            contentPadding:
+                                const EdgeInsets.fromLTRB(12, 5, 12, 5),
+                            filled: true,
+                            fillColor: const Color(0xFFB8B8B8),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -58,16 +84,20 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
 
   Widget _buildAddPostButton(context) {
     return ElevatedButton(
-        onPressed: () => _addPost(context),
-        key: const Key("post_next_button"),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF007ACC),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          disabledBackgroundColor: Colors.white24,
-          disabledForegroundColor: Colors.white,
-        ),
-        child: const Text("Add post"));
+      onPressed: () => _addPost(context),
+      key: const Key("post_next_button"),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xCC007ACC),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        disabledBackgroundColor: Colors.white24,
+        disabledForegroundColor: Colors.white,
+      ),
+      child: const Text(
+        "Add post",
+        style: TextStyle(fontSize: 12),
+      ),
+    );
   }
 
   /// Add new post, should be called from 'Add post' button only

@@ -23,9 +23,15 @@ class MyApp extends StatelessWidget {
         Provider<Repository>(create: (context) => FirestoreRepository()),
         Provider<AuthBase>(create: (context) => Auth())
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData(
+          textSelectionTheme: const TextSelectionThemeData(
+            cursorColor: Colors.white,
+            selectionColor: Colors.black,
+          )
+        ),
         debugShowCheckedModeBanner: false,
-        home: LandingPage(),
+        home: const LandingPage(),
       ),
     );
   }
