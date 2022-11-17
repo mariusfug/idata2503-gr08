@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/post.dart';
-
 import '../services/format_time.dart';
 
 class PostCard extends StatelessWidget {
@@ -25,6 +23,20 @@ class PostCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    ("${post.boardTag}  •  username"),
+                    style: const TextStyle(fontSize: 14, color: Colors.white38),
+                  ),
+                  Text(
+                    FormatTime.formatTime(post.createdAt),
+                    style: const TextStyle(color: Colors.white38),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5.0),
               Text(post.title,
                   style: const TextStyle(
                       fontSize: 22,
@@ -76,10 +88,6 @@ class PostCard extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  Text(
-                    post.boardTag,
-                    style: const TextStyle(color: Colors.white),
-                  ),
                   const SizedBox(
                     width: 10,
                   ),
@@ -93,7 +101,6 @@ class PostCard extends StatelessWidget {
                       size: 15,
                     ),
                   ),
-                  Text(FormatTime.formatTime(post.createdAt), style: const TextStyle(color: Colors.white38),)
                 ],
               ),
             ],

@@ -60,7 +60,7 @@ class _AddNewPostState extends State<AddNewPost> {
       if (!_titleValid()) {
         _enableValidation();
       } else {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => SelectGroupToPost(post: Post(title: _title, content: _content, boardTag: ''))));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SelectGroupToPost(post: Post(title: _title, content: _content, boardTag: 'General'))));
       }
     } catch (e) {
       print(e.toString());
@@ -107,10 +107,8 @@ class _AddNewPostState extends State<AddNewPost> {
                             ),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: _buildNextButton(context),
-                        )
+                        _buildNextButton(context),
+
                       ],
                     ),
                     TextField(
