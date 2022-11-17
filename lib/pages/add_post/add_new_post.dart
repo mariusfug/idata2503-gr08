@@ -6,6 +6,8 @@ import 'package:idata2503_group08/pages/add_post/select_group_to_post.dart';
 import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/services/validators.dart';
 
+import '../../model/post.dart';
+
 class AddNewPost extends StatefulWidget {
   const AddNewPost({Key? key}) : super(key: key);
 
@@ -59,7 +61,7 @@ class _AddNewPostState extends State<AddNewPost> {
       if (!_titleValid()) {
         _enableValidation();
       } else {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectGroupToPost()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => SelectGroupToPost(post: Post(title: _title, content: _content, boardTag: ''))));
       }
     } catch (e) {
       print(e.toString());

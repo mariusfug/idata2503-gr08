@@ -1,21 +1,27 @@
+import 'dart:convert';
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:timeago/timeago.dart';
 
 class Post {
   String title;
   final String? content;
-  int upVote = 0;
-  int downVote = 0;
+  int? upVote;
+  int? downVote;
   Image? image;
   final String boardTag;
   final String? groupTag;
+  DateTime createdAt;
 
   Post(
       {required this.title,
-      required this.upVote,
-      required this.downVote,
       required this.boardTag,
+      this.content,
       this.groupTag,
-      this.content});
+      DateTime? createdAt,
+      this.upVote = 0,
+      this.downVote = 0})
+      : createdAt = createdAt ?? Timestamp.now().toDate();
 
   static Post fromMap(Map<String, dynamic> data) {
     assert(data.containsKey("title"), "Missing title property");
@@ -25,13 +31,16 @@ class Post {
     assert(data.containsKey("boardTag"), "Missing board tag property");
     assert(data.containsKey("groupTag"), "Missing group tag property");
     assert(data.containsKey("image"), "Missing image property");
+    assert(data.containsKey("createdAt"), "Missing date property");
 
     return Post(
-        title: data["title"],
-        content: data["content"],
-        upVote: data["upvote"],
-        downVote: data["downvote"],
-        boardTag: data["boardTag"],
-        groupTag: data["groupTag"]);
+      title: data["title"],
+      content: data["content"],
+      upVote: data["upvote"],
+      downVote: data["downvote"],
+      boardTag: data["boardTag"],
+      groupTag: data["groupTag"],
+      createdAt: (data["createdAt"] as Timestamp).toDate(),
+    );
   }
 }
