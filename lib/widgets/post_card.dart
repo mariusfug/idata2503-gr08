@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../model/post.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+import '../services/format_time.dart';
 
 class PostCard extends StatelessWidget {
   final Post post;
@@ -90,8 +94,9 @@ class PostCard extends StatelessWidget {
                       size: 15,
                     ),
                   ),
+                  Text(FormatTime.formatTime(post.createdAt), style: const TextStyle(color: Colors.white38),)
                 ],
-              )
+              ),
             ],
           ),
         ),

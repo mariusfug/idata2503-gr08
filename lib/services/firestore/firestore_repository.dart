@@ -22,7 +22,8 @@ class FirestoreRepository implements Repository {
       "downvote": post.downVote,
       "boardTag": post.boardTag,
       "groupTag": post.groupTag,
-      "image": post.image
+      "image": post.image,
+      "createdAt": post.createdAt,
     });
     return null;
   }
@@ -47,7 +48,7 @@ class FirestoreRepository implements Repository {
     print("Get collection items at $path");
 
     final Stream<QuerySnapshot<Map<String, dynamic>>> snapshots =
-        posts.collection(path).snapshots();
+        posts.collection(path).orderBy('createdAt', descending: true).snapshots();
 
     return snapshots.map((collectionSnapshot) {
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
