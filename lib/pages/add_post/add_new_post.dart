@@ -4,6 +4,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/add_post/select_group_to_post.dart';
 import 'package:idata2503_group08/services/validators.dart';
+import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
+import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 
 import '../../model/post.dart';
 
@@ -77,7 +79,9 @@ class _AddNewPostState extends State<AddNewPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: const Color(0xFF1E1E1E),
+      appBar: TopNavigation(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -160,6 +164,7 @@ class _AddNewPostState extends State<AddNewPost> {
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 

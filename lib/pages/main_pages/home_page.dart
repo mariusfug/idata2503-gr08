@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/widgets/post_card.dart';
 import 'package:provider/provider.dart';
 import '../../model/post.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFF1E1E1E),
+      appBar: TopNavigation(),
       body: Center(
         child: SingleChildScrollView(
           child: Column(

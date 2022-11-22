@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
 import 'package:provider/provider.dart';
 import '../../model/post.dart';
 import '../../services/repository.dart';
@@ -16,7 +17,7 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopNavigation(),
+      appBar: TopNavigation(),
       backgroundColor: const Color(0xFF1E1E1E),
       body: SingleChildScrollView(
         child: Padding(
@@ -79,6 +80,7 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 

@@ -7,12 +7,12 @@ import '../../services/auth.dart';
 import 'package:idata2503_group08/pages/main_pages/home_page.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
-  const TopNavigation({Key? key}) : super(key: key);
+  TopNavigation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('Forum app'),
+      title: const Text("Forum App"),
       backgroundColor: const Color(0xFF1E1E1E),
       actions: [
         /// Notification bell
