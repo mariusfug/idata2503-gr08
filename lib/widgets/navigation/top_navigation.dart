@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/add_post/add_new_post.dart';
 import 'package:idata2503_group08/pages/main_pages/main_screen.dart';
+import 'package:idata2503_group08/pages/user_page.dart';
 
 import '../../services/auth.dart';
 import 'package:idata2503_group08/pages/main_pages/home_page.dart';
@@ -40,7 +41,7 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
           constraints: BoxConstraints.tight(const Size(35.0, 35.0)),
           onPressed: () {
             MaterialPageRoute materialPageRoute =
-                MaterialPageRoute(builder: (context) => const AddNewPost());
+                MaterialPageRoute(builder: (context) => const UserPage());
             Navigator.of(context).push(materialPageRoute);
           },
           elevation: 2.0,

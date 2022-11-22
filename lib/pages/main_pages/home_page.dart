@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../model/post.dart';
 import '../../services/auth.dart';
 import '../../services/repository.dart';
+import '../../widgets/navigation/bottom_navigation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 

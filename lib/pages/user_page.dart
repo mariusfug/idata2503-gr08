@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
+import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class _UserPage extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const TopNavigation(),
       body: Container(
         color: const Color(0x1E1E1E1E),
         child: Column(
@@ -44,6 +47,7 @@ class _UserPage extends State<UserPage> {
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
