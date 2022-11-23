@@ -10,43 +10,46 @@ class GroupsPage extends StatelessWidget {
       appBar: TopNavigation(),
       bottomNavigationBar: const BottomNavBar(),
       body:SingleChildScrollView(
-        child:
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 20,),
+            RawMaterialButton(onPressed: () { },
+                elevation: 2.0,
+                fillColor: const Color(0xFFFFFFFF),
+                shape: const CircleBorder(),
+                child: const ImageIcon(
+                  AssetImage("resources/icons/group_outline.png"),
+                  size: 180,
+                )),
+            const SizedBox(height: 20,),
+            RawMaterialButton(onPressed: () { },
+                elevation: 2.0,
+                fillColor: const Color(0xFFFFFFFF),
+                shape: const CircleBorder(),
+                child: const ImageIcon(
+                  AssetImage("resources/icons/group_outline.png"),
+                  size: 180,
+                )),
+            const SizedBox(height: 20,),
+            RawMaterialButton(onPressed: () { },
+                elevation: 2.0,
+                fillColor: const Color(0xFFFFFFFF),
+                shape: const CircleBorder(),
+                child: const ImageIcon(
+                  AssetImage("resources/icons/group_outline.png"),
+                  size: 180,
+                ))
+          ],
+        ),
+      )
 
-              children: [
-                    RawMaterialButton(onPressed: () { },
-                        elevation: 2.0,
-                        fillColor: const Color(0xFFFFFFFF),
-                        shape: const CircleBorder(),
-                        child: const ImageIcon(
-                          AssetImage("resources/icons/user_outline.png"),
-                          size: 180,
-                        )),
-                    RawMaterialButton(onPressed: () { },
-                        elevation: 2.0,
-                        fillColor: const Color(0xFFFFFFFF),
-                        shape: const CircleBorder(),
-                        child: const ImageIcon(
-                          AssetImage("resources/icons/user_outline.png"),
-                          size: 180,
-                        )),
-                    RawMaterialButton(onPressed: () { },
-                        elevation: 2.0,
-                        fillColor: const Color(0xFFFFFFFF),
-                        shape: const CircleBorder(),
-                        child: const ImageIcon(
-                          AssetImage("resources/icons/user_outline.png"),
-                          size: 180,
-                        ))
-                  ],
-                )
-
-            )
+            );
 
 
-      );
+
+
+
 
   }
 
