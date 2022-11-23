@@ -20,7 +20,7 @@ class GroupsPage extends StatelessWidget {
                 shape: const CircleBorder(),
                 child: const ImageIcon(
                   AssetImage("resources/icons/group_outline.png"),
-                  size: 180,
+                  size: 150,
                 )),
             const SizedBox(height: 20,),
             RawMaterialButton(onPressed: () { },
@@ -29,7 +29,7 @@ class GroupsPage extends StatelessWidget {
                 shape: const CircleBorder(),
                 child: const ImageIcon(
                   AssetImage("resources/icons/group_outline.png"),
-                  size: 180,
+                  size: 150,
                 )),
             const SizedBox(height: 20,),
             RawMaterialButton(onPressed: () { },
@@ -37,8 +37,8 @@ class GroupsPage extends StatelessWidget {
                 fillColor: const Color(0xFFFFFFFF),
                 shape: const CircleBorder(),
                 child: const ImageIcon(
-                  AssetImage("resources/icons/group_outline.png"),
-                  size: 180,
+                  AssetImage("resources/icons/plus_outline.png"),
+                  size: 150,
                 ))
           ],
         ),
