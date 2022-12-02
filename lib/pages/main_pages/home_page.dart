@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
     final Repository repository =
         Provider.of<Repository>(context, listen: false);
     return StreamBuilder<Iterable<Post>?>(
-      stream: repository.getPostsStream("general/posts"),
+      stream: repository.getPostsStream("general/posts", "createdAt"),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.active ||
             !snapshot.hasData ||
