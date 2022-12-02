@@ -4,7 +4,6 @@ import 'package:idata2503_group08/pages/chat_page.dart';
 import 'package:idata2503_group08/pages/discover_page.dart';
 import 'package:idata2503_group08/pages/groups_page.dart';
 import 'package:idata2503_group08/pages/main_pages/home_page.dart';
-import 'package:idata2503_group08/pages/main_pages/main_screen.dart';
 import 'package:idata2503_group08/services/auth.dart';
 
 
@@ -42,7 +41,7 @@ class _BottomNavBar extends State<BottomNavBar> {
     return BottomAppBar(
       color: const Color(0xFF1E1E1E),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           IconButton(
             color: const Color(0x90B8B8B8),

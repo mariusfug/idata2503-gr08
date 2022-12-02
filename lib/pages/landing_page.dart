@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth.dart';
-import 'main_pages/main_screen.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -21,7 +20,7 @@ class LandingPage extends StatelessWidget {
           if (user == null) {
             return SignIn(auth: auth);
           }
-          return MainScreen(auth: auth);
+          return const HomePage();
         });
   }
 }

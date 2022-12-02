@@ -27,14 +27,6 @@ class SignIn extends StatelessWidget {
     }
   }
 
-  Future<void> _signInWithFacebook() async {
-    try {
-      final user = await auth.signInWithFacebook();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -67,45 +59,6 @@ class SignIn extends StatelessWidget {
               ),
               child: const Text(
                 "Sign in with Google",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _signInWithFacebook();
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4267B2),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: const Text(
-                "Sign in with Facebook",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print("working");
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4F7942),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: const Text(
-                "Sign in with Email",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print("working");
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFC6A03),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: const Text(
-                "Sign in with mobile number",
                 style: TextStyle(color: Colors.white),
               ),
             ),
