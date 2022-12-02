@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Post {
   String title;
   final String? content;
-  int? upVote;
-  int? downVote;
+  int upVote;
+  int downVote;
   Image? image;
   final String boardTag;
   final String? groupTag;

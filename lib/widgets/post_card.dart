@@ -1,15 +1,27 @@
+import 'dart:html';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/services/firestore/firestore_repository.dart';
+import 'package:provider/provider.dart';
 
 import '../../model/post.dart';
 import '../services/format_time.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   final Post post;
 
   const PostCard(this.post, {Key? key}) : super(key: key);
 
   @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  @override
   Widget build(BuildContext context) {
+    final counterModel = Provider.of<voteCounter>(context, listen: false);
     return FractionallySizedBox(
       widthFactor: 0.95,
       child: Card(
@@ -27,25 +39,25 @@ class PostCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    ("${post.boardTag}  •  username"),
+                    ("${widget.post.boardTag}  •  username"),
                     style: const TextStyle(fontSize: 14, color: Colors.white38),
                   ),
                   Text(
-                    FormatTime.formatTime(post.createdAt),
+                    FormatTime.formatTime(widget.post.createdAt),
                     style: const TextStyle(color: Colors.white38),
                   ),
                 ],
               ),
               const SizedBox(height: 5.0),
-              Text(post.title,
+              Text(widget.post.title,
                   style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
               const Divider(height: 15, color: Colors.white, thickness: 1),
-              (post.content == null)
+              (widget.post.content == null)
                   ? Container()
-                  : Text(post.content!,
+                  : Text(widget.post.content!,
                       style:
                           const TextStyle(fontSize: 14, color: Colors.white)),
               const SizedBox(
@@ -56,7 +68,16 @@ class PostCard extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      print("object");
+                      counterModel.upVote();
+                      widget.post.upVote++;
+                      FirebaseFirestore.instance
+                          .collection('groups/general/posts')
+                          .doc()
+                          .update({
+                        'upvote': FieldValue.increment(1),
+                      });
+
+                      setState(() {});
                     },
                     icon: const ImageIcon(
                       AssetImage("resources/icons/upvote.png"),
@@ -65,7 +86,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${post.upVote}",
+                    "${widget.post.upVote}",
                     style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
@@ -73,7 +94,7 @@ class PostCard extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      print("object");
+                      counterModel.downVote();
                     },
                     icon: const ImageIcon(
                       AssetImage("resources/icons/downvote.png"),
@@ -82,7 +103,7 @@ class PostCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${post.downVote}",
+                    "${widget.post.downVote}",
                     style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
@@ -108,5 +129,22 @@ class PostCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class voteCounter with ChangeNotifier {
+  int _voteCounter = 0;
+
+  getCounter() => _voteCounter;
+  setCounter(int voteCounter) => _voteCounter = voteCounter;
+
+  void upVote() {
+    _voteCounter++;
+    notifyListeners();
+  }
+
+  void downVote() {
+    _voteCounter--;
+    notifyListeners();
   }
 }
