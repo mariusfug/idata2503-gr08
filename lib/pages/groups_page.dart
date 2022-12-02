@@ -14,7 +14,7 @@ class GroupsPage extends StatelessWidget {
         alignment: Alignment.topCenter,
 
         child: Wrap(
-          
+
           spacing: 25,
           runSpacing: 25,
           children: [
