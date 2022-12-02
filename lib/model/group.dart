@@ -1,17 +1,22 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Group {
-  String id;
+  int id;
   String name;
-  String leader;
-  List<String> members;
 
   Group({
     required this.id,
     required this.name,
-    required this.leader,
-    required this.members,
 });
+
+  static Group fromMap(Map<String, dynamic> data) {
+    assert(data.containsKey("id"), "Missing id property");
+    assert(data.containsKey("name"), "Missing name property");
+
+    return Group(
+      id: data["id"],
+      name: data["name"],
+    );
+  }
 
 
 
