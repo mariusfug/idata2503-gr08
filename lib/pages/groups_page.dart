@@ -9,36 +9,39 @@ class GroupsPage extends StatelessWidget {
         backgroundColor: const Color(0xFF1E1E1E),
       appBar: TopNavigation(),
       bottomNavigationBar: const BottomNavBar(),
-      body:SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body:Align(
+
+        alignment: Alignment.topCenter,
+
+        child: Wrap(
+          
+          spacing: 25,
+          runSpacing: 25,
           children: [
-            const SizedBox(height: 20,),
-            RawMaterialButton(onPressed: () { },
-                elevation: 2.0,
-                fillColor: const Color(0xFFFFFFFF),
-                shape: const CircleBorder(),
-                child: const ImageIcon(
-                  AssetImage("resources/icons/group_outline.png"),
-                  size: 150,
-                )),
-            const SizedBox(height: 20,),
-            RawMaterialButton(onPressed: () { },
-                elevation: 2.0,
-                fillColor: const Color(0xFFFFFFFF),
-                shape: const CircleBorder(),
-                child: const ImageIcon(
-                  AssetImage("resources/icons/group_outline.png"),
-                  size: 150,
-                )),
-            const SizedBox(height: 20,),
+
             RawMaterialButton(onPressed: () { },
                 elevation: 2.0,
                 fillColor: const Color(0xFFFFFFFF),
                 shape: const CircleBorder(),
                 child: const ImageIcon(
                   AssetImage("resources/icons/plus_outline.png"),
-                  size: 150,
+                  size: 125,
+                )),
+            RawMaterialButton(onPressed: () { },
+                elevation: 2.0,
+                fillColor: const Color(0xFFFFFFFF),
+                shape: const CircleBorder(),
+                child: const ImageIcon(
+                  AssetImage("resources/icons/group_outline.png"),
+                  size: 125,
+                )),
+            RawMaterialButton(onPressed: () { },
+                elevation: 2.0,
+                fillColor: const Color(0xFFFFFFFF),
+                shape: const CircleBorder(),
+                child: const ImageIcon(
+                  AssetImage("resources/icons/group_outline.png"),
+                  size: 125,
                 ))
           ],
         ),
