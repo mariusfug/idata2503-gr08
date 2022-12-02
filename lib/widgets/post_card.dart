@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +70,7 @@ class _PostCardState extends State<PostCard> {
                       widget.post.upVote++;
                       FirebaseFirestore.instance
                           .collection('groups/general/posts')
-                          .doc()
+                          .doc("6PvXIeGSMDbeuRPhOVno")
                           .update({
                         'upvote': FieldValue.increment(1),
                       });
