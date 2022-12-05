@@ -74,7 +74,6 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      print(widget.collection);
                       if (upvoted == false) {
                         counterModel.upVote();
                         widget.post.upVote++;
