@@ -74,11 +74,12 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   IconButton(
                     onPressed: () {
+                      print(widget.collection);
                       if (upvoted == false) {
                         counterModel.upVote();
                         widget.post.upVote++;
                         FirebaseFirestore.instance
-                            .collection('groups/${widget.collection}/posts')
+                            .collection('groups/${widget.collection}')
                             .doc(widget.post.postID)
                             .update({
                           'upvote': FieldValue.increment(1),
@@ -87,7 +88,7 @@ class _PostCardState extends State<PostCard> {
                         counterModel.upVote();
                         widget.post.upVote--;
                         FirebaseFirestore.instance
-                            .collection('groups/${widget.collection}/posts')
+                            .collection('groups/${widget.collection}')
                             .doc(widget.post.postID)
                             .update({
                           'upvote': FieldValue.increment(-1),
@@ -119,7 +120,7 @@ class _PostCardState extends State<PostCard> {
                         downVoteCounterModel.downVote();
                         widget.post.downVote++;
                         FirebaseFirestore.instance
-                            .collection(ApiPaths.group("groups/general/posts"))
+                            .collection(('groups/${widget.collection}'))
                             .doc(widget.post.postID)
                             .update({
                           'downvote': FieldValue.increment(1),
@@ -128,7 +129,7 @@ class _PostCardState extends State<PostCard> {
                         downVoteCounterModel.downVote();
                         widget.post.downVote--;
                         FirebaseFirestore.instance
-                            .collection('groups/general/posts')
+                            .collection('groups/${widget.collection}')
                             .doc(widget.post.postID)
                             .update({
                           'downvote': FieldValue.increment(-1),
