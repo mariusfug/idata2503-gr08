@@ -8,14 +8,12 @@ class Post {
   int downVote;
   String postID;
   Image? image;
-  final String boardTag;
-  final String? groupTag;
+  String? groupTag;
   DateTime createdAt;
 
 
   Post(
       {required this.title,
-      required this.boardTag,
       this.content,
       this.postID = "",
       this.groupTag,
@@ -29,7 +27,6 @@ class Post {
     assert(data.containsKey("content"), "Missing content property");
     assert(data.containsKey("upvote"), "Missing upvote property");
     assert(data.containsKey("downvote"), "Missing downvote property");
-    assert(data.containsKey("boardTag"), "Missing board tag property");
     assert(data.containsKey("groupTag"), "Missing group tag property");
     assert(data.containsKey("image"), "Missing image property");
     assert(data.containsKey("createdAt"), "Missing date property");
@@ -41,7 +38,6 @@ class Post {
       postID: data["postID"],
       upVote: data["upvote"],
       downVote: data["downvote"],
-      boardTag: data["boardTag"],
       groupTag: data["groupTag"],
       createdAt: (data["createdAt"] as Timestamp).toDate(),
     );

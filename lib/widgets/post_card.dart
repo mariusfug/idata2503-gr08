@@ -45,7 +45,7 @@ class _PostCardState extends State<PostCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    ("${widget.post.boardTag}  •  username"),
+                    ("${widget.post.groupTag}  •  username"),
                     style: const TextStyle(fontSize: 14, color: Colors.white38),
                   ),
                   Text(
@@ -119,7 +119,7 @@ class _PostCardState extends State<PostCard> {
                         downVoteCounterModel.downVote();
                         widget.post.downVote++;
                         FirebaseFirestore.instance
-                            .collection(('groups/${widget.collection}'))
+                            .collection(("groups/${widget.collection}"))
                             .doc(widget.post.postID)
                             .update({
                           'downvote': FieldValue.increment(1),

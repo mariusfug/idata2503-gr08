@@ -69,7 +69,7 @@ class _AddNewPostState extends State<AddNewPost> {
                     post: Post(
                         title: _title,
                         content: _content,
-                        boardTag: 'General'))));
+                        ))));
       }
     } catch (e) {
       print(e.toString());
