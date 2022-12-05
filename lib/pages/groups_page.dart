@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/pages/groups/create_group.dart';
 import 'package:idata2503_group08/widgets/navigation/bottom_navigation.dart';
 import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 
@@ -19,7 +20,11 @@ class GroupsPage extends StatelessWidget {
           runSpacing: 25,
           children: [
 
-            RawMaterialButton(onPressed: () { },
+            RawMaterialButton(onPressed: () {
+              MaterialPageRoute materialPageRoute = MaterialPageRoute(
+                  builder: (context) => const CreateGroup());
+              Navigator.of(context).push(materialPageRoute);
+            },
                 elevation: 2.0,
                 fillColor: const Color(0xFFFFFFFF),
                 shape: const CircleBorder(),
