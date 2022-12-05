@@ -53,31 +53,10 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      SizedBox(
-                        height: 30,
-                        child: TextField(
-                          cursorColor: Colors.black,
-                          maxLines: 1,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              borderSide: const BorderSide(
-                                  color: Colors.white38, width: 1.0),
-                            ),
-                            hintText: "Search...",
-                            hintStyle: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold),
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(12, 5, 12, 5),
-                            filled: true,
-                            fillColor: const Color(0xFFB8B8B8),
-                          ),
-                        ),
-                      ),
+
+
+
+
                       const SizedBox(height: 20),
                       _buildGroupCards(context),
                     ],
