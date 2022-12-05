@@ -57,9 +57,11 @@ class FirestoreRepository implements Repository {
       "id": docRef.id,
       "name": group.name,
     });
+    var collection = instance.collection('groups/${docRef.id}/posts');
+    collection.add({"id": "posts"});
+
     return null;
   }
-
 
   /// Returns a document at specific path
   Stream<T?> _getDocumentStream<T>(
@@ -80,8 +82,10 @@ class FirestoreRepository implements Repository {
       String path, String orderBy, T Function(Map<String, dynamic>) converter) {
     print("Get collection items at $path");
 
-    final Stream<QuerySnapshot<Map<String, dynamic>>> snapshots =
-        instance.collection(path).orderBy(orderBy, descending: true).snapshots();
+    final Stream<QuerySnapshot<Map<String, dynamic>>> snapshots = instance
+        .collection(path)
+        .orderBy(orderBy, descending: true)
+        .snapshots();
 
     return snapshots.map((collectionSnapshot) {
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
