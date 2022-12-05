@@ -6,6 +6,7 @@ class Post {
   final String? content;
   int upVote;
   int downVote;
+  String postID;
   Image? image;
   final String boardTag;
   final String? groupTag;
@@ -15,6 +16,7 @@ class Post {
       {required this.title,
       required this.boardTag,
       this.content,
+      this.postID = "",
       this.groupTag,
       DateTime? createdAt,
       this.upVote = 0,
@@ -30,10 +32,12 @@ class Post {
     assert(data.containsKey("groupTag"), "Missing group tag property");
     assert(data.containsKey("image"), "Missing image property");
     assert(data.containsKey("createdAt"), "Missing date property");
+    assert(data.containsKey("postID"), "Missing post ID property");
 
     return Post(
       title: data["title"],
       content: data["content"],
+      postID: data["postID"],
       upVote: data["upvote"],
       downVote: data["downvote"],
       boardTag: data["boardTag"],
