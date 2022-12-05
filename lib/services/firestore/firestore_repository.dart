@@ -9,7 +9,7 @@ class FirestoreRepository implements Repository {
   final FirebaseFirestore instance = FirebaseFirestore.instance;
 
   @override
-  Stream<Iterable<Group>> getGroupsStream(String orderBy) =>
+  Stream<Iterable<Group>> getGroupsStream({required String orderBy}) =>
       _getCollectionStream(ApiPaths.groups(), orderBy, Group.fromMap);
 
   @override

@@ -138,7 +138,7 @@ class _SelectGroupToPostState extends State<SelectGroupToPost> {
     final Repository repository =
     Provider.of<Repository>(context, listen: false);
     return StreamBuilder<Iterable<Group>?>(
-      stream: repository.getGroupsStream("name"),
+      stream: repository.getGroupsStream(orderBy: "name"),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.active ||
             !snapshot.hasData ||

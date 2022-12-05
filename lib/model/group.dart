@@ -1,6 +1,6 @@
 
 class Group {
-  int id;
+  String id;
   String name;
 
   Group({
