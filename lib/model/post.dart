@@ -12,6 +12,7 @@ class Post {
   final String? groupTag;
   DateTime createdAt;
 
+
   Post(
       {required this.title,
       required this.boardTag,
