@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +17,15 @@ class PostCard extends StatefulWidget {
 }
 
 class _PostCardState extends State<PostCard> {
+  bool upvoted = false;
+  bool downvoted = false;
+  final Color _iconColor = Colors.blue;
   @override
   Widget build(BuildContext context) {
     final counterModel = Provider.of<voteCounter>(context, listen: false);
+    final downVoteCounterModel =
+        Provider.of<downVoteCounter>(context, listen: false);
+
     return FractionallySizedBox(
       widthFactor: 0.95,
       child: Card(
@@ -67,20 +72,35 @@ class _PostCardState extends State<PostCard> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      counterModel.upVote();
-                      widget.post.upVote++;
-                      FirebaseFirestore.instance
-                          .collection('groups/general/posts')
-                          .doc("6PvXIeGSMDbeuRPhOVno")
-                          .update({
-                        'upvote': FieldValue.increment(1),
-                      });
+                      if (upvoted == false) {
+                        counterModel.upVote();
+                        widget.post.upVote++;
+                        FirebaseFirestore.instance
+                            .collection('groups/general/posts')
+                            .doc(widget.post.postID)
+                            .update({
+                          'upvote': FieldValue.increment(1),
+                        });
+                      } else {
+                        counterModel.upVote();
+                        widget.post.upVote--;
+                        FirebaseFirestore.instance
+                            .collection('groups/general/posts')
+                            .doc(widget.post.postID)
+                            .update({
+                          'upvote': FieldValue.increment(-1),
+                        });
+                      }
+                      upvoted = !upvoted;
+                      downvoted = false;
 
-                      setState(() {});
+                      setState(() {
+                        _iconColor;
+                      });
                     },
-                    icon: const ImageIcon(
-                      AssetImage("resources/icons/upvote.png"),
-                      color: Colors.white,
+                    icon: ImageIcon(
+                      const AssetImage("resources/icons/upvote.png"),
+                      color: upvoted ? Colors.blue : Colors.white,
                       size: 15,
                     ),
                   ),
@@ -93,11 +113,33 @@ class _PostCardState extends State<PostCard> {
                   ),
                   IconButton(
                     onPressed: () {
-                      counterModel.downVote();
+                      if (downvoted == false) {
+                        downVoteCounterModel.downVote();
+                        widget.post.downVote++;
+                        FirebaseFirestore.instance
+                            .collection('groups/general/posts')
+                            .doc(widget.post.postID)
+                            .update({
+                          'downvote': FieldValue.increment(1),
+                        });
+                      } else {
+                        downVoteCounterModel.downVote();
+                        widget.post.downVote--;
+                        FirebaseFirestore.instance
+                            .collection('groups/general/posts')
+                            .doc(widget.post.postID)
+                            .update({
+                          'downvote': FieldValue.increment(-1),
+                        });
+                      }
+                      downvoted = !downvoted;
+                      upvoted = false;
+
+                      setState(() {});
                     },
-                    icon: const ImageIcon(
-                      AssetImage("resources/icons/downvote.png"),
-                      color: Colors.white,
+                    icon: ImageIcon(
+                      const AssetImage("resources/icons/downvote.png"),
+                      color: downvoted ? Colors.orange : Colors.white,
                       size: 15,
                     ),
                   ),
@@ -110,16 +152,6 @@ class _PostCardState extends State<PostCard> {
                   ),
                   const SizedBox(
                     width: 10,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      print("object");
-                    },
-                    icon: const ImageIcon(
-                      AssetImage("resources/icons/chat_bubble_outline.png"),
-                      color: Colors.white,
-                      size: 15,
-                    ),
                   ),
                 ],
               ),
@@ -144,6 +176,23 @@ class voteCounter with ChangeNotifier {
 
   void downVote() {
     _voteCounter--;
+    notifyListeners();
+  }
+}
+
+class downVoteCounter with ChangeNotifier {
+  int _downVoteCounter = 0;
+
+  getDownCounter() => _downVoteCounter;
+  setDownCounter(int downVoteCounter) => _downVoteCounter = downVoteCounter;
+
+  void upVoteDownVote() {
+    _downVoteCounter++;
+    notifyListeners();
+  }
+
+  void downVote() {
+    _downVoteCounter--;
     notifyListeners();
   }
 }

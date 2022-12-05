@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<Repository>(create: (context) => FirestoreRepository()),
         Provider<AuthBase>(create: (context) => Auth()),
-        ChangeNotifierProvider<voteCounter>(create: (_) => voteCounter())
+        ChangeNotifierProvider<voteCounter>(create: (_) => voteCounter()),
+        ChangeNotifierProvider<downVoteCounter>(
+            create: (_) => downVoteCounter()),
       ],
       child: MaterialApp(
         theme: ThemeData(

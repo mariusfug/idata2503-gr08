@@ -43,7 +43,6 @@ class FirestoreRepository implements Repository {
       "postID": docRef.id,
     });
     String docId = docRef.id;
-    print(docId);
     return null;
   }
 
