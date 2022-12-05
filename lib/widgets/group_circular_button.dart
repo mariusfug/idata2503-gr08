@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/services/firestore/api_paths.dart';
 
 import '../../model/post.dart';
 import '../model/group.dart';
+import '../pages/main_pages/feed.dart';
 import '../services/format_time.dart';
 
 class GroupCircularButton extends StatelessWidget {
@@ -14,7 +16,9 @@ class GroupCircularButton extends StatelessWidget {
     return Column(
       children: [
         RawMaterialButton(
-          onPressed: () {},
+          onPressed: () {MaterialPageRoute materialPageRoute = MaterialPageRoute(
+              builder: (context) => Feed(groupId: ApiPaths.group(group.id),));
+          Navigator.of(context).push(materialPageRoute);},
           elevation: 2.0,
           fillColor: const Color(0xFFB8B8B8),
           shape: const CircleBorder(),

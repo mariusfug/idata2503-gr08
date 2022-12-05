@@ -3,8 +3,10 @@ import 'package:idata2503_group08/pages/add_post/add_new_post.dart';
 import 'package:idata2503_group08/pages/chat_page.dart';
 import 'package:idata2503_group08/pages/discover_page.dart';
 import 'package:idata2503_group08/pages/groups_page.dart';
-import 'package:idata2503_group08/pages/main_pages/home_page.dart';
+import 'package:idata2503_group08/pages/main_pages/feed.dart';
 import 'package:idata2503_group08/services/auth.dart';
+
+import '../../services/firestore/api_paths.dart';
 
 
 class BottomNavBar extends StatefulWidget {
@@ -22,7 +24,7 @@ class _BottomNavBar extends State<BottomNavBar> {
   int _selectedIndex = 0;
 
   List<Widget> pages = [
-    const HomePage(),
+    Feed(groupId: ApiPaths.group("general")),
     DiscoverPage(),
     const AddNewPost(),
     GroupsPage(),
@@ -47,7 +49,7 @@ class _BottomNavBar extends State<BottomNavBar> {
             color: const Color(0x90B8B8B8),
               onPressed: () {
                 MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                    builder: (context) => const HomePage());
+                    builder: (context) => Feed(groupId: ApiPaths.group("general")));
                 Navigator.of(context).push(materialPageRoute);
               },
               tooltip: "HomePage",

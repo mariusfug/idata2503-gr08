@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:idata2503_group08/services/firestore/api_paths.dart';
 import 'package:idata2503_group08/services/firestore/firestore_repository.dart';
 import 'package:provider/provider.dart';
 
@@ -9,8 +10,9 @@ import '../services/format_time.dart';
 
 class PostCard extends StatefulWidget {
   final Post post;
+  final String collection;
 
-  const PostCard(this.post, {Key? key}) : super(key: key);
+  const PostCard(this.post, this.collection, {Key? key}) : super(key: key);
 
   @override
   State<PostCard> createState() => _PostCardState();
@@ -76,7 +78,7 @@ class _PostCardState extends State<PostCard> {
                         counterModel.upVote();
                         widget.post.upVote++;
                         FirebaseFirestore.instance
-                            .collection('groups/general/posts')
+                            .collection('groups/${widget.collection}/posts')
                             .doc(widget.post.postID)
                             .update({
                           'upvote': FieldValue.increment(1),
@@ -85,7 +87,7 @@ class _PostCardState extends State<PostCard> {
                         counterModel.upVote();
                         widget.post.upVote--;
                         FirebaseFirestore.instance
-                            .collection('groups/general/posts')
+                            .collection('groups/${widget.collection}/posts')
                             .doc(widget.post.postID)
                             .update({
                           'upvote': FieldValue.increment(-1),
@@ -117,7 +119,7 @@ class _PostCardState extends State<PostCard> {
                         downVoteCounterModel.downVote();
                         widget.post.downVote++;
                         FirebaseFirestore.instance
-                            .collection('groups/general/posts')
+                            .collection(ApiPaths.group("groups/general/posts"))
                             .doc(widget.post.postID)
                             .update({
                           'downvote': FieldValue.increment(1),

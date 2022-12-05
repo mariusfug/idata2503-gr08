@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:idata2503_group08/widgets/navigation/top_navigation.dart';
 import 'package:idata2503_group08/widgets/post_card.dart';
 import 'package:provider/provider.dart';
+import '../../model/group.dart';
 import '../../model/post.dart';
 import '../../services/auth.dart';
 import '../../services/repository.dart';
 import '../../widgets/navigation/bottom_navigation.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Feed extends StatelessWidget {
+  String groupId;
+
+  Feed({super.key, required this.groupId});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class HomePage extends StatelessWidget {
     final Repository repository =
         Provider.of<Repository>(context, listen: false);
     return StreamBuilder<Iterable<Post>?>(
-      stream: repository.getPostsStream("general/posts", "createdAt"),
+      stream: repository.getPostsStream(groupId, "createdAt"),
       builder: (context, snapshot) {
         if (snapshot.connectionState != ConnectionState.active ||
             !snapshot.hasData ||
@@ -46,7 +49,7 @@ class HomePage extends StatelessWidget {
         }
         final Iterable<Post> posts = snapshot.data!;
         final List<PostCard> postCards =
-            posts.map((post) => PostCard(post)).toList();
+            posts.map((post) => PostCard(post, groupId)).toList();
 
         return Column(children: postCards);
       },

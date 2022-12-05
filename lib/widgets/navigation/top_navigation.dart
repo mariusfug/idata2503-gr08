@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:idata2503_group08/pages/user_page.dart';
+import 'package:idata2503_group08/services/firestore/api_paths.dart';
 
 import '../../services/auth.dart';
-import 'package:idata2503_group08/pages/main_pages/home_page.dart';
+import 'package:idata2503_group08/pages/main_pages/feed.dart';
 
 class TopNavigation extends StatelessWidget with PreferredSizeWidget {
   TopNavigation({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class TopNavigation extends StatelessWidget with PreferredSizeWidget {
         RawMaterialButton(
           onPressed: () {
             MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                builder: (context) => const HomePage());
+                builder: (context) => Feed(groupId: ApiPaths.group("general"),));
             Navigator.of(context).push(materialPageRoute);
           },
           elevation: 2.0,
