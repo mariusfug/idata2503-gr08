@@ -15,7 +15,6 @@ class Feed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFF1E1E1E),
       appBar: TopNavigation(),
@@ -23,9 +22,6 @@ class Feed extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ElevatedButton(
-                  onPressed: () => _signOut(context),
-                  child: const Text("Logout")),
               _buildPostCards(context),
             ],
           ),
@@ -54,14 +50,5 @@ class Feed extends StatelessWidget {
         return Column(children: postCards);
       },
     );
-  }
-
-  Future<void> _signOut(BuildContext context) async {
-    try {
-      final auth = Provider.of<AuthBase>(context, listen: false);
-      await auth.signOut();
-    } catch (e) {
-      print(e.toString());
-    }
   }
 }
