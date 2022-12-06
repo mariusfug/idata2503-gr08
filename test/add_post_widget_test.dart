@@ -19,15 +19,14 @@ void main() {
     try{
       final postTitle = find.byKey(const ValueKey("postTitle"));
       final postDescription = find.byKey(const ValueKey("postDescription"));
-      final submitButton = find.byKey(const ValueKey("submitButton"));
-      final imagePicker = find.byKey(const ValueKey("postImage"));
+
 
       await tester.pumpWidget(const MaterialApp(home: AddNewPost()));
       await tester.enterText(postTitle, "this is for testing");
       await tester.enterText(postDescription, "Even more testing");
-      await tester.tap(submitButton);
       await tester.pump();
-    } catch(e){print(e.toString());
+    } catch(e) {
+      print(e.toString());
     }
 
     
